@@ -36,6 +36,16 @@ public class GoodsController {
         return list;
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/api/goods/page", method = RequestMethod.GET)
+    public List<Goods> list(@RequestParam int startPage,@RequestParam int pageSize) {
+        List<Goods> list = new ArrayList<>();
+        for (Goods g : goodsService.listPageGoods(startPage,pageSize)) {
+            list.add(g);
+        }
+        return list;
+    }
+
     @RequestMapping("goods/{id}")
     public String showGoods(@PathVariable Long id ,Model model){
         model.addAttribute("goods",goodsService.getGoodsById(id));
