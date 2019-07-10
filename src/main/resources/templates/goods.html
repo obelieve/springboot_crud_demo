@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Spring Boot Exemple</title>
+
+    <!--/*/ <th:block th:include="fragments/headerinc :: head"></th:block> /*/-->
+</head>
+<body>
+<div class="container">
+    <!--/*/ <th:block th:include="fragments/header :: header"></th:block> /*/-->
+    <div th:if="${not #lists.isEmpty(goods)}">
+        <h2>Goods List</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>商品名称</th>
+                <th>商品内容</th>
+                <th>商品介绍</th>
+                <th>商品详情介绍</th>
+                <th>商品标签</th>
+                <th>商品存量</th>
+                <th>生产日期</th>
+                <th>生产地</th>
+                <th>原价</th>
+                <th>折扣价</th>
+                <th>计量单位</th>
+                <th>存储温度</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <tr th:each="g : ${goods}">
+                <td th:text="${g.id}"><a href="/goods/${g.id}">Id</a></td>
+                <td th:text="${g.name}">商品名称</td>
+                <td th:text="${g.content}">商品内容</td>
+                <td th:text="${g.goodsIntro}">商品介绍</td>
+                <td th:text="${g.detailIntro}">商品详情介绍</td>
+                <td th:text="${g.label}">商品标签</td>
+                <td th:text="${g.amount}">商品存量</td>
+                <td th:text="${g.productionTime}">生产日期</td>
+                <td th:text="${g.productionPlace}">生产地</td>
+                <td th:text="${g.originPrice}">原价</td>
+                <td th:text="${g.discountPrice}">折扣价</td>
+                <td th:text="${g.measureUnit}">计量单位</td>
+                <td th:text="${g.storageTemp}">存储温度</td>
+                <td><a th:href="${ '/goods/' + g.id}">View</a></td>
+                <td><a th:href="${'/goods/edit/' + g.id}">Edit</a></td>
+                <td><a th:href="${'/goods/delete/' + g.id}">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+
+</body>
+</html>
