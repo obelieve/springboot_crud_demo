@@ -23,6 +23,7 @@ create table goods (
     `discount_price` decimal(9,2),
     `measure_unit` varchar(50) ,
     `storage_temp` decimal(2,1),
+    `category` varchar(50),
     primary key (`id`)
 ) engine=innodb default charset=utf8;
 
