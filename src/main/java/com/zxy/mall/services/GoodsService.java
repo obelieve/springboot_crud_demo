@@ -1,5 +1,6 @@
 package com.zxy.mall.services;
 
+import com.zxy.mall.entities.EntityPage;
 import com.zxy.mall.entities.Goods;
 import org.springframework.data.domain.Page;
 
@@ -9,7 +10,7 @@ public interface GoodsService {
     
     Iterable<Goods> listAllGoods();
 
-    Page<Goods> listPageGoods(int startPage,int pageSize);
+    EntityPage<Goods> listPageGoods(int startPage, int pageSize);
 
     Optional<Goods> getGoodsById(Long id);
 

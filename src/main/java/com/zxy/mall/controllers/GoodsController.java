@@ -1,5 +1,6 @@
 package com.zxy.mall.controllers;
 
+import com.zxy.mall.entities.EntityPage;
 import com.zxy.mall.entities.Goods;
 import com.zxy.mall.services.GoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,12 +39,8 @@ public class GoodsController {
 
     @ResponseBody
     @RequestMapping(value = "/api/goods/page", method = RequestMethod.GET)
-    public List<Goods> list(@RequestParam int startPage,@RequestParam int pageSize) {
-        List<Goods> list = new ArrayList<>();
-        for (Goods g : goodsService.listPageGoods(startPage,pageSize)) {
-            list.add(g);
-        }
-        return list;
+    public EntityPage<Goods> list(@RequestParam int startPage, @RequestParam int pageSize) {
+        return  goodsService.listPageGoods(startPage,pageSize);
     }
 
     @RequestMapping("goods/{id}")

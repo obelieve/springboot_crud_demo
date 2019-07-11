@@ -1,5 +1,6 @@
 package com.zxy.mall.services;
 
+import com.zxy.mall.entities.EntityPage;
 import com.zxy.mall.entities.Goods;
 import com.zxy.mall.repositories.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,17 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public Page<Goods> listPageGoods(int startPage, int pageSize) {
-        Sort sort = new Sort(Sort.Direction.DESC,"id");
-        Pageable pageable =PageRequest.of(startPage, pageSize, sort);
-        return goodsRepository.findAll(pageable);
+    public EntityPage<Goods> listPageGoods(int startPage, int pageSize) {
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(startPage, pageSize, sort);
+        Page<Goods> page = goodsRepository.findAll(pageable);
+        EntityPage<Goods> entityPage = new EntityPage<>();
+        entityPage.setList(page.getContent());
+        entityPage.setStartPage(page.getNumber());
+        entityPage.setPageSize(page.getSize());
+        entityPage.setTotal(page.getTotalElements());
+        entityPage.setNext(page.getContent().size() == page.getSize());
+        return entityPage;
     }
 
     @Override
