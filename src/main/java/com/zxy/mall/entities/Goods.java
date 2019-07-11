@@ -2,7 +2,6 @@ package com.zxy.mall.entities;
 
 import javax.persistence.*;
 
-@Table(name = "t_goods")
 @Entity
 public class Goods {
     @Id
@@ -19,7 +18,7 @@ public class Goods {
     private float originPrice;
     private float discountPrice;
     private String measureUnit;
-    private String storageTemp;
+    private float storageTemp;
 
 
     public long getId() {
@@ -130,11 +129,11 @@ public class Goods {
     }
 
 
-    public String getStorageTemp() {
+    public float getStorageTemp() {
         return storageTemp;
     }
 
-    public void setStorageTemp(String storageTemp) {
+    public void setStorageTemp(float storageTemp) {
         this.storageTemp = storageTemp;
     }
 
