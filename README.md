@@ -1,1 +1,1 @@
-# SpringBoot 商品管理系统
+# 学习SpringBoot CURD的Demo
